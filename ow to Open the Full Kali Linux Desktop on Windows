@@ -1,0 +1,55 @@
+How to Open the Full Kali Linux Desktop on Windows
+
+If you installed Kali Linux on your Windows computer using the Microsoft Store, you might be wondering how to get out of the plain black text terminal and see a normal, easy-to-use desktop with windows, icons, and menus.
+
+This guide will show you how to set up and open the full visual Kali Linux desktop on your computer screen.
+
+Part A: Why Use a Graphical Desktop Instead of Text
+For anyone who is not a software expert, a black screen full of text commands can feel intimidating and confusing. Using a graphical desktop makes using Linux much easier for several reasons.
+
+First, you can see all your files, folders, and applications right on your screen without needing to memorize special text commands.
+
+Second, you can use your mouse to click on menus, open programs, drag files around, and resize windows just like you do on Windows or Mac.
+
+Third, many security and testing tools are much simpler to run when you can click buttons, view buttons, look at colorful charts, and scroll through menus instead of reading lines of raw text.
+
+Part B: Preparing Kali Linux for the Desktop
+Before you can see the desktop, you need to download a special tool called Win-KeX. This program takes the Linux system hiding behind the scenes and displays it as a regular app window on your screen.
+
+Open your Kali Linux app from the Windows Start menu and copy the text commands below. To paste a line of text into your Linux terminal window, right-click anywhere inside the black box or press Ctrl + Shift + V on your keyboard, then press Enter.
+
+Write on Medium
+First, make sure your system is up to date:
+
+sudo apt update && sudo apt upgrade -y
+Next, download and install the desktop program. Type your password if it asks for one (note that characters won’t show on screen as you type, which is normal for security):
+
+sudo apt install -y kali-win-kex
+Part C: Opening Your Desktop
+Once the installation finishes, you can start your visual desktop at any time. There are three different ways to view it depending on your preference. Simply copy and paste the line that matches what you want to do.
+
+If you want the Linux desktop to open inside its own floating window:
+
+kex --win
+If you want the Kali menu bar to float at the top of your current Windows desktop so you can use both Windows and Linux side-by-side:
+
+kex --sl
+If you want a full-screen experience that fills your monitor completely:
+
+kex --esm
+Part D: Closing and Reopening the Desktop Later
+When you are finished using Linux and want to close the visual desktop window, you can simply close the app window or return to your text terminal and type the stop command:
+
+kex --stop
+The next time you want to use the visual desktop, you do not need to repeat Part B. You only need to open your Kali Linux app and run your preferred command from Part C.
+
+Launching Kali GUI Apps via Python
+If you want to trigger the desktop or specific Linux GUI tools directly from a Python script inside Kali:
+
+import subprocess
+
+# Option 1: Launch the full Win-KeX Desktop
+subprocess.Popen(["kex", "--win"])
+
+# Option 2: Launch a specific Kali GUI tool (e.g., Wireshark or Burp Suite)
+subprocess.Popen(["wireshark"])
